@@ -8,9 +8,14 @@ on:
 jobs:
   commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # ✅ allows push access
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ built-in token
 
       - name: Update file - 24f2006505@ds.study.iitm.ac.in
         run: |
